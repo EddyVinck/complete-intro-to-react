@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="/public/style.css" /> -->
+  <title>svideo</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- <div id="app"><%= body %></div> -->
+  <!-- <script src="/public/bundle.js"></script> -->
+  <script src="node_modules/react/dist/react.js"></script>
+  <script src="node_modules/react-dom/dist/react-dom.js"></script>
+  <script type="text/javascript">
+    const MyTitle = (props) => {
+      return (
+        React.createElement('div', {}, 
+          React.createElement('h1', { style: { color: props.color} }, props.title)
+        )
+      )
+    }
+
+    const MyFirstComponent = () => {
+      return React.createElement('div', {},
+        [
+          React.createElement(MyTitle, { title: 'Game of Thrones', color: 'GreenYellow' }),
+          React.createElement(MyTitle, { title: 'Narcos', color: 'YellowGreen' }),
+          React.createElement(MyTitle, { title: 'Orange Is The New Black', color: 'LimeGreen' }),
+          React.createElement(MyTitle, { title: 'Stranger Things', color: 'Lime'  })
+        ]
+      )
+    }
+
+    ReactDOM.render(
+      React.createElement(MyFirstComponent),
+      document.getElementById('app')
+    );
+    
+  </script>
+</body>
+
+</html>
