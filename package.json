@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "api": "node ratingsAPI.js"
+    "api": "node ratingsAPI.js",
+    "bundle": "webpack",
+    "watch": "webpack --watch"
   },
   "dependencies": {
     "axios": "0.16.1",

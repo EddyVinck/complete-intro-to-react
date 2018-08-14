@@ -1,30 +1,20 @@
-const MyTitle = props => {
-  return React.createElement(
-    'div',
-    {},
-    React.createElement('h1', { style: { color: props.color } }, props.title)
-  );
-};
+import React from 'react';
+import { render } from 'react-dom';
 
-const MyFirstComponent = () => {
-  return React.createElement('div', {}, [
-    React.createElement(MyTitle, {
-      title: 'Game of Thrones',
-      color: 'GreenYellow',
-    }),
-    React.createElement(MyTitle, {
-      title: 'Narcos',
-      color: 'YellowGreen',
-    }),
-    React.createElement(MyTitle, {
-      title: 'Orange Is The New Black',
-      color: 'LimeGreen',
-    }),
-    React.createElement(MyTitle, {
-      title: 'Stranger Things',
-      color: 'Lime',
-    }),
-  ]);
-};
+const MyTitle = props => (
+  <div>
+    <h1 style={{ color: props.color }}>{props.title}</h1>
+  </div>
+);
 
-ReactDOM.render(React.createElement(MyFirstComponent), document.getElementById('app'));
+// Composite component: a component made up of other components
+const MyFirstComponent = () => (
+  <div id="my-first-component">
+    <MyTitle title="Game of Thrones" color="GreenYellow" />
+    <MyTitle title="Narcos" color="YellowGreen" />
+    <MyTitle title="Orange Is The New Black" color="LimeGreen" />
+    <MyTitle title="Stranger Things" color="Lime" />
+  </div>
+);
+
+render(<MyFirstComponent />, document.getElementById('app'));
