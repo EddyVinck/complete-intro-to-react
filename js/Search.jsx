@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import preload from '../data.json';
+import { arrayOf } from 'prop-types';
+import Show from './types';
 
 import ShowCard from './ShowCard';
+import Header from './Header';
 
 class Search extends Component {
   constructor(props) {
@@ -10,7 +12,6 @@ class Search extends Component {
     this.state = {
       searchTerm: '',
     };
-
     // this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
   }
   handleSearchTermChange = event => {
@@ -19,17 +20,13 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>svideo</h1>
-          <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
-            type="text"
-            placeholder="search"
-          />
-        </header>
+        <Header
+          showSearch
+          searchTerm={this.searchTerm}
+          handleSearchTermChange={this.handleSearchTermChange}
+        />
         <div>
-          {preload.shows
+          {this.props.shows
             .filter(
               show =>
                 `${show.title} ${show.description}`
@@ -42,5 +39,9 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  shows: arrayOf(Show).isRequired,
+};
 
 export default Search;

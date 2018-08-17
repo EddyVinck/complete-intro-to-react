@@ -6,17 +6,17 @@ import preload from '../../data.json';
 
 describe('Search', () => {
   it('renders correctly', () => {
-    const component = shallow(<Search />);
+    const component = shallow(<Search shows={preload.shows} />);
     expect(component).toMatchSnapshot();
   });
 
   it('should render correct amount of shows', () => {
-    const component = shallow(<Search />);
+    const component = shallow(<Search shows={preload.shows} />);
     expect(component.find(ShowCard).length).toEqual(preload.shows.length);
   });
 
   it('should render correct amount of shows based on search term', () => {
-    const component = shallow(<Search />);
+    const component = shallow(<Search shows={preload.shows} />);
     const searchWord = 'Black';
     component.find('input').simulate('change', { target: { value: searchWord } });
     const showCount = preload.shows.filter(
