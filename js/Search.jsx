@@ -1,15 +1,19 @@
-// @flow
-
 import React, { Component } from 'react';
 import preload from '../data.json';
 
 import ShowCard from './ShowCard';
 
 class Search extends Component {
-  state = {
-    searchTerm: '',
-  };
-  handleSearchTermChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchTerm: '',
+    };
+
+    // this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
+  }
+  handleSearchTermChange = event => {
     this.setState({ searchTerm: event.target.value });
   };
   render() {
