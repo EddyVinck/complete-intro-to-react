@@ -22,7 +22,7 @@ class Search extends Component {
       <div className="search">
         <Header
           showSearch
-          searchTerm={this.searchTerm}
+          searchTerm={this.state.searchTerm}
           handleSearchTermChange={this.handleSearchTermChange}
         />
         <div>
