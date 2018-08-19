@@ -17,7 +17,6 @@ class App extends Component {
     };
   }
   handleSearchTermChange = event => {
-    console.log('test');
     this.setState({ searchTerm: event.target.value });
   };
   render() {
@@ -25,7 +24,17 @@ class App extends Component {
       <BrowserRouter>
         <div className="app">
           <Switch>
-            <Route exact path="/" component={Landing} />
+            <Route
+              exact
+              path="/"
+              component={props => (
+                <Landing
+                  searchTerm={this.state.searchTerm}
+                  handleSearchTermChange={this.handleSearchTermChange}
+                  {...props}
+                />
+              )}
+            />
             <Route
               path="/search"
               component={props => (
