@@ -19,6 +19,9 @@ class App extends Component {
   handleSearchTermChange = event => {
     this.setState({ searchTerm: event.target.value });
   };
+  resetSearchTerm = () => {
+    this.setState({ searchTerm: '' });
+  };
   render() {
     return (
       <BrowserRouter>
@@ -31,6 +34,7 @@ class App extends Component {
                 <Landing
                   searchTerm={this.state.searchTerm}
                   handleSearchTermChange={this.handleSearchTermChange}
+                  resetSearchTerm={this.resetSearchTerm}
                   {...props}
                 />
               )}

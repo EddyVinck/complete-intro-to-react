@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { func, string } from 'prop-types';
 
 class Landing extends Component {
@@ -9,6 +8,16 @@ class Landing extends Component {
     this.searchInput.value = '';
     this.searchInput.value = val;
   }
+  handleSearchSubmit = event => {
+    if (event.keyCode === 13) {
+      this.props.history.push('/search');
+    }
+  };
+  handleBrowseAll = event => {
+    event.preventDefault();
+    this.props.resetSearchTerm();
+    this.props.history.push('/search');
+  };
   render() {
     return (
       <div className="landing">
@@ -21,8 +30,10 @@ class Landing extends Component {
           placeholder="search"
           value={this.props.searchTerm}
           onChange={this.props.handleSearchTermChange}
+          onKeyDown={this.handleSearchSubmit}
         />
-        <Link to="/search">or Browse All</Link>
+        <div style={{ 'margin-top': '10px' }}>or</div>
+        <a href="/search" onClick={this.handleBrowseAll}>Browse All</a>
       </div>
     );
   }
@@ -30,12 +41,15 @@ class Landing extends Component {
 
 Landing.defaultProps = {
   handleSearchTermChange: function noop() {},
+  resetSearchTerm: function noop() {},
   searchTerm: '',
 };
 
 Landing.propTypes = {
   handleSearchTermChange: func,
+  resetSearchTerm: func,
   searchTerm: string,
+  history: func.isRequired,
 };
 
 export default Landing;
