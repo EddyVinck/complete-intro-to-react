@@ -1,14 +1,18 @@
 import React from 'react';
-import { shape, string } from 'prop-types';
+// import { shape, string } from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Show from './types';
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   width: 32%;
   border: 2px solid #333;
   border-radius: 4px;
   margin-bottom: 25px;
   padding-right: 10px;
   overflow: hidden;
+  color: black;
+  text-decoration: none;
 `;
 
 const Image = styled.img`
@@ -18,7 +22,7 @@ const Image = styled.img`
 `;
 
 const ShowCard = props => (
-  <Wrapper>
+  <Wrapper to={`/details/${props.show.imdbID}`}>
     <Image
       src={`/public/img/posters/${props.show.poster}`}
       alt={`${props.show.title} Show Poster`}
@@ -32,12 +36,7 @@ const ShowCard = props => (
 );
 
 ShowCard.propTypes = {
-  show: shape({
-    poster: string.isRequired,
-    title: string.isRequired,
-    year: string.isRequired,
-    description: string.isRequired,
-  }).isRequired,
+  show: Show.isRequired,
 };
 
 export default ShowCard;

@@ -8,7 +8,10 @@ const showsObj = JSON.parse(buffer);
 const app = express();
 app.use(cors());
 const ratedShows = showsObj.shows.map(show =>
-  Object.assign({ rating: `${Math.floor(Math.random() * 9)}.${Math.floor(Math.random() * 9)}` }, show)
+  Object.assign(
+    { rating: `${Math.floor(Math.random() * 9)}.${Math.floor(Math.random() * 9)}` },
+    show
+  )
 );
 
 app.get('/:id', (req, res) => {
@@ -22,6 +25,6 @@ app.get('/:id', (req, res) => {
   }
 });
 
-console.log(`Starting server on port 3000`);
+console.log(`Starting server on port 3001`);
 console.log(`Generating new random ratings`);
-app.listen(3000);
+app.listen(3001);
