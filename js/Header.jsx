@@ -7,6 +7,7 @@ const Header = props => {
   if (props.showSearch) {
     utilSpace = (
       <input
+        key="searchShow"
         onChange={props.handleSearchTermChange}
         value={props.searchTerm}
         type="text"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Landing from './Landing';
@@ -8,26 +8,51 @@ import preload from '../data.json';
 
 const FourOhFour = () => <h1>404 rip</h1>;
 
-const App = () => (
-  <BrowserRouter>
-    <div className="app">
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route path="/search" component={props => <Search shows={preload.shows} {...props} />} />
-        <Route
-          path="/details/:id"
-          component={data => (
-            <Details
-              show={preload.shows.find(show => data.match.params.id === show.imdbID)}
-              // Pass all the regular data into Details as well, because Details is a route and it would miss out on match, location and history
-              {...data}
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchTerm: '',
+    };
+  }
+  handleSearchTermChange = event => {
+    console.log('test');
+    this.setState({ searchTerm: event.target.value });
+  };
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="app">
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route
+              path="/search"
+              component={props => (
+                <Search
+                  shows={preload.shows}
+                  {...props}
+                  searchTerm={this.state.searchTerm}
+                  handleSearchTermChange={this.handleSearchTermChange}
+                />
+              )}
             />
-          )}
-        />
-        <Route component={FourOhFour} />
-      </Switch>
-    </div>
-  </BrowserRouter>
-);
+            <Route
+              path="/details/:id"
+              component={data => (
+                <Details
+                  show={preload.shows.find(show => data.match.params.id === show.imdbID)}
+                  // Pass all the regular data into Details as well, because Details is a route and it would miss out on match, location and history
+                  {...data}
+                />
+              )}
+            />
+            <Route component={FourOhFour} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
 
 export default App;

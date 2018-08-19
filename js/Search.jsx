@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { arrayOf } from 'prop-types';
+import { arrayOf, func, string } from 'prop-types';
 import Show from './types';
 
 import ShowCard from './ShowCard';
@@ -12,18 +12,15 @@ class Search extends Component {
     this.state = {
       searchTerm: '',
     };
-    // this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
   }
-  handleSearchTermChange = event => {
-    this.setState({ searchTerm: event.target.value });
-  };
   render() {
     return (
       <div className="search">
         <Header
+          key="searchHeader"
           showSearch
-          searchTerm={this.state.searchTerm}
-          handleSearchTermChange={this.handleSearchTermChange}
+          searchTerm={this.props.searchTerm}
+          handleSearchTermChange={this.props.handleSearchTermChange}
         />
         <div>
           {this.props.shows
@@ -31,7 +28,7 @@ class Search extends Component {
               show =>
                 `${show.title} ${show.description}`
                   .toLowerCase()
-                  .indexOf(this.state.searchTerm.toLowerCase()) > -1
+                  .indexOf(this.props.searchTerm.toLowerCase()) > -1
             )
             .map(show => <ShowCard key={show.imdbID} show={show} />)}
         </div>
@@ -40,8 +37,15 @@ class Search extends Component {
   }
 }
 
+Search.defaultProps = {
+  handleSearchTermChange: function noop() {},
+  searchTerm: '',
+};
+
 Search.propTypes = {
   shows: arrayOf(Show).isRequired,
+  handleSearchTermChange: func,
+  searchTerm: string,
 };
 
 export default Search;
