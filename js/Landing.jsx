@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { func, string } from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 class Landing extends Component {
   componentDidMount() {
@@ -32,7 +33,7 @@ class Landing extends Component {
           onChange={this.props.handleSearchTermChange}
           onKeyDown={this.handleSearchSubmit}
         />
-        <div style={{ 'margin-top': '10px' }}>or</div>
+        <div style={{ marginTop: '10px' }}>or</div>
         <a href="/search" onClick={this.handleBrowseAll}>Browse All</a>
       </div>
     );
@@ -49,7 +50,7 @@ Landing.propTypes = {
   handleSearchTermChange: func,
   resetSearchTerm: func,
   searchTerm: string,
-  history: func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default Landing;

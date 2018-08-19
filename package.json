@@ -8,7 +8,9 @@
     "test:update": "jest -u"
   },
   "jest": {
-    "snapshotSerializers": ["jest-serializer-enzyme"]
+    "snapshotSerializers": [
+      "jest-serializer-enzyme"
+    ]
   },
   "dependencies": {
     "axios": "0.16.1",
@@ -27,6 +29,7 @@
     "react-dom": "15.5.4",
     "react-redux": "5.0.5",
     "react-router-dom": "4.1.1",
+    "react-router-prop-types": "^1.0.4",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "styled-components": "2.0.0",

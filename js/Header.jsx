@@ -4,10 +4,12 @@ import { bool, string, func } from 'prop-types';
 
 class Header extends Component {
   componentDidMount() {
-    this.searchInput.focus();
-    const val = this.searchInput.value;
-    this.searchInput.value = '';
-    this.searchInput.value = val;
+    if (this.searchInput) {
+      this.searchInput.focus();
+      const val = this.searchInput.value;
+      this.searchInput.value = '';
+      this.searchInput.value = val;
+    }
   }
   render() {
     let utilSpace;
