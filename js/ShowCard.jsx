@@ -1,5 +1,4 @@
 import React from 'react';
-// import { shape, string } from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Show from './types';

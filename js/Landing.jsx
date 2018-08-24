@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { string, func } from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import setSearchTerm from './actionCreators';
+import { setSearchTerm } from './actionCreators';
 
 // Decorator (would be able to replace the connect in the export)
 // @connect(mapStateToProps)
