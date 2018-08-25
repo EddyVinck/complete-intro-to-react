@@ -21,7 +21,7 @@ const Image = styled.img`
 `;
 
 const ShowCard = props => (
-  <Wrapper to={`/details/${props.show.imdbID}`}>
+  <Wrapper to={`/details/${props.show.imdbID}`} className="show-card">
     <Image
       src={`/public/img/posters/${props.show.poster}`}
       alt={`${props.show.title} Show Poster`}

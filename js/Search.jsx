@@ -33,4 +33,5 @@ Search.propTypes = {
   shows: arrayOf(Show).isRequired,
 };
 
+export const Unwrapped = Search; // for testing
 export default connect(mapStateToProps)(Search);
