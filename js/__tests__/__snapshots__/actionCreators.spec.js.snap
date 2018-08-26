@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addApiData 1`] = `
+Object {
+  "payload": Object {
+    "description": "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.",
+    "imdbID": "tt0903747",
+    "poster": "bb.jpg",
+    "rating": "8.2",
+    "title": "Breaking Bad",
+    "trailer": "XZ8daibM3AE",
+    "year": "2008–2013",
+  },
+  "type": "ADD_API_DATA",
+}
+`;
+
+exports[`setSearchTerm 1`] = `
+Object {
+  "payload": "New York",
+  "type": "SET_SEARCH_TERM",
+}
+`;
