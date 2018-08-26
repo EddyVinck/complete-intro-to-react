@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
+const config = {
   context: __dirname,
   entry: [
     'react-hot-loader/patch',
@@ -45,3 +45,11 @@ module.exports = {
     ],
   },
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.entry = './js/clientApp.jsx';
+  config.devtool = false;
+  config.plugins = [];
+}
+
+module.exports = config;

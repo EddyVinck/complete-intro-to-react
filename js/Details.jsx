@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { func, string } from 'prop-types';
 import { connect } from 'react-redux';
-import { getApiDetails } from './actionCreators';
+import getApiDetails from './asyncActionCreators';
 import Show from './types';
 import Header from './Header';
 import Spinner from './Spinner';

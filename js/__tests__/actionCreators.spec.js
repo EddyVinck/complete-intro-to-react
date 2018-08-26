@@ -1,5 +1,6 @@
 import moxios from 'moxios';
-import { setSearchTerm, addApiData, getApiDetails } from '../actionCreators';
+import { setSearchTerm, addApiData } from '../actionCreators';
+import getApiDetails from '../asyncActionCreators';
 
 const breakingBad = {
   title: 'Breaking Bad',
